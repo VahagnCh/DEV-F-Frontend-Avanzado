@@ -1,18 +1,23 @@
-import React from 'react'
+import SongList from '@/components/SongList'
+import SongDetails from '@/components/SongDetails'
 import './home.css'
+import { SongProvider } from '@/context/SongContext'
 
-const home = () => {
+const Home = () => {
   return (
-    <div className='home-container'>
-      <div className='izquierdo'>
-        <h2>Lado Izquierdo</h2>
-      </div>
+    <SongProvider>
+      <div className='home-container'>
+        <div className='izquierdo'>
+          <h2>Song List</h2>
+          <SongList />
+        </div>
 
-      <div className='derecho'>
-        <h2>Lado Derecho</h2>
+        <div className='derecho'>
+          <h2>Lado Derecho</h2>
+          <SongDetails />
+        </div>
       </div>
-    </div>
+    </SongProvider>
   )
 }
-
-export default home
+export default Home
