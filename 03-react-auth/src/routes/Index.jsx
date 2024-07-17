@@ -1,16 +1,17 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
+import { useAuthContext } from '@/hooks/useAuth'
 import Home from '@/pages/Home'
 import Dashboard from '@/pages/Dashboard'
 import Secret from '@/pages/Secret'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
-import { useAuthContext } from '../hooks/useAuth'
 
 const RoutesIndex = () => {
   const { isAuth } = useAuthContext()
+
   return (
     <Routes>
-      <Route path='/home' element={<Home />} />
+      <Route path='/' element={<Home />} />
       <Route
         path='/dashboard'
         element={isAuth ? <Dashboard /> : <Navigate to='/login' />}
@@ -24,5 +25,4 @@ const RoutesIndex = () => {
     </Routes>
   )
 }
-
 export default RoutesIndex

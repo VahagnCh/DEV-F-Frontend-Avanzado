@@ -1,6 +1,6 @@
 $menu-color: #3d3d3d;
 
-@mixin header-link ($hover: true){
+@mixin header-link($hover: true) {
     color: $menu-color;
     text-decoration: none;
     letter-spacing: 2px;
@@ -20,22 +20,21 @@ $menu-color: #3d3d3d;
     padding: 15px 30px;
 
     &__logo {
-        @include header-link();
+        @include header-link(false);
     }
 
     &__nav-list {
         display: flex;
-        flex-wrap: wrap;
         list-style: none;
         column-gap: 20px;
+        flex-wrap: wrap;
     }
 
     &__item-link {
-        @include header-link();
-        
+        @include header-link;
+
         &--is-active {
             border-bottom: solid 2px $menu-color;
         }
-        
-       }
+    }
 }

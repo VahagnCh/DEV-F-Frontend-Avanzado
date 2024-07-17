@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { useAuthContext } from '../../hooks/useAuth'
+import { useAuthContext } from '@/hooks/useAuth'
 import './header.scss'
 
 const Header = () => {
@@ -18,6 +18,7 @@ const Header = () => {
           >Home
           </NavLink>
         </li>
+
         <li className='header__list-item'>
           <NavLink
             to='/dashboard'
@@ -36,6 +37,7 @@ const Header = () => {
                 >Secret
                 </NavLink>
               </li>
+
               <li className='header__list-item'>
                 <NavLink
                   to='/'
@@ -55,6 +57,7 @@ const Header = () => {
                 >Login
                 </NavLink>
               </li>
+
               <li className='header__list-item'>
                 <NavLink
                   to='/signup'

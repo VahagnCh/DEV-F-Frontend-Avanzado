@@ -1,11 +1,14 @@
 import { createContext, useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
+// #1 Crear el contexto
 const AuthContext = createContext()
 
+// #2a Crear la función del proveedor (provider)
 const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false)
-  const [userPayload, setUserPayload] = useState(null)
+  // Aquí va la lógica de autenticación
+  const [isAuth, setIsAuth] = useState(false) // ¿Estoy autenticado?
+  const [userPayload, setUserPayload] = useState(null) // JWT payload decodificado
 
   const login = (token) => {
     localStorage.setItem('token', token)
@@ -19,7 +22,8 @@ const AuthProvider = ({ children }) => {
     setIsAuth(false)
     setUserPayload(null)
   }
-  // Verificar si hay un token en el localStorage y si es valido cargarlo para evitar que el usuario tenga que loguearse en cada recarga de pagina
+
+  // verificar si hay un token en el localStorage y si es válido cargarlo para evitar que el usuario tenga que loguearse cada vez que recargue/entre a la página
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -30,11 +34,13 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   const data = {
+    // Las cosas que quiero hacer global
     isAuth,
     userPayload,
     login,
     logout
   }
+
   return (
     <AuthContext.Provider value={data}>
       {children}
